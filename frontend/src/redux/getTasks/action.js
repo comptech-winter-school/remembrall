@@ -1,6 +1,6 @@
 /* eslint-disable no-debugger */
 import axios from "axios";
-import types from "../constants/types";
+import types from "../constants/typesShow";
 
 const showListTasksSuccess = (tasks) => ({
   type: types.SHOW_LIST_TASKS_SUCCESS,
@@ -21,7 +21,7 @@ const showListTasksFailure = (error) => ({
 const showListTasks = () => (dispatch) => {
   dispatch(showListTasksStarted());
   axios
-    .get("https://jsonplaceholder.typicode.com/users")
+    .get("https://remembrallbot.herokuapp.com/")
     .then((res) => {
       dispatch(showListTasksSuccess(res.data));
     })

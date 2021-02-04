@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "env": {
+                "BOTTOKEN" : "1676316317:AAEivg5kJFLzkpw7_vkNLd-nL3T0-bwIaQQ",
+                "FIREBASE_API_KEY" : "AIzaSyBeikJGVErGkp9V1cbQ-mkIgT6kx55Lmbs",
+                "FIREBASE_AUTH_DOMAIN" : "remembrall-project-8f1d6.firebaseapp.com",
+                "FIREBASE_PROJECT_ID" : "remembrall-project-8f1d6",
+                "FIREBASE_STORAGE_BUCKET" : "remembrall-project-8f1d6.appspot.com",
+                "FIREBASE_MESSAGING_SENDER_ID" : "888548627715",
+                "FIREBASE_APP_ID" : "1:888548627715:web:40a4459508cc2adcce8536"
+            },
+            "program": "${workspaceFolder}/dist/server.js"
+        }
+    ]
+}

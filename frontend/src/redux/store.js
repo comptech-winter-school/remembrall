@@ -1,18 +1,15 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
-import rootReducer from "./getTasks/reducer";
+import getTasksReducer from "./getTasks/reducer";
+import addTasksReducer from "./addTasks/reducer";
+// import TasksTabs from "../components/TasksTabs/TasksTabs";
 
-// const initialState = {
-//   tasks: [
-//     {
-//       id: 1, title: "Task1", description: "Lalala", isActive: true,
-//     },
-//     {
-//       id: 2, title: "Task2", description: "Inactivedddddd", isActive: false,
-//     },
-//   ],
-// };
+const rootReducer = combineReducers({
+    getTasksReducer,
+    addTasksReducer,
+  })
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
+// store.subscribe(TasksTabs);
 
 export default store;

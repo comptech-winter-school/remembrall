@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+![](https://i.ibb.co/6PWkWbd/js.png)
+# Urban Bot Starter
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Develop chatbots with zero configuration using javascript. If you want to use typescript use [ts starter](https://github.com/urban-bot/urban-bot-starter-typescript).
 
-## Available Scripts
+## Launch
+```shell
+npx create-urban-bot my-app --template js
+```
 
-In the project directory, you can run:
+### Telegram
+ 1. Get telegram [token](https://core.telegram.org/bots#6-botfather)
+ 2. Paste token to `.env` `TELEGRAM_TOKEN=YOUR_TOKEN`
+ 3. Uncomment `// import './render/telegram';` inside `src/index.ts` 
+ 4. Run `npm run dev` and check your bot
 
-### `npm start`
+### Slack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ 1. Create [slack app](https://slack.com/intl/en-ru/help/articles/115005265703-Create-a-bot-for-your-workspace)
+ 2. Paste [token](https://api.slack.com/authentication/token-types#granular_bot) to `.env` `SLACK_TOKEN=YOUR_TOKEN` 
+ 3. Paste [signing secret](https://api.slack.com/authentication/verifying-requests-from-slack#about) to `.env` `SLACK_SIGNING_SECRET=YOUR_SIGNING_SECRET`
+ 4. Run `npm run start-tunnel` and connect the public url with slack webhook.
+ 5. Uncomment `// import './render/slack';` inside `src/index.ts`
+ 6. Run `npm run dev` and check your bot
+ 
+ ### Facebook
+ 
+  1. Create [facebook app](https://developers.facebook.com/docs/messenger-platform/getting-started/app-setup)
+  2. Paste credentials to `.env`
+  3. Run `npm run start-tunnel` and connect the public url with facebook webhook.
+  4. Uncomment `// import './render/facebook';` inside `src/index.ts`
+  5. Run `npm run dev` and check your bot
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## Scripts
+#### `npm run build`
+Build your code to `dist` folder.
+#### `npm run dev`
+Build and start your code after every code changes. Settings are inside `package.json` `nodemonConfig`.
+#### `npm run lint`
+Check code style. All rules are inside `.eslintrc.js`.
+#### `npm run lint:fix`
+Fix code style issues automatically including `prettier` formatting.
+#### `npm run start`
+Start code from `dist` folder.
+#### `npm run start-tunnel`
+Start a public URL for exposing your local server.
+#### `npm run test`
+Start your tests. File matching `*.test.(js|jsx)`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Import files
+You could import any file and paste to components as buffer or stream. It will be automatically added to dist bundle.
+```jsx
+import image from './assets/logo.png';
+import doc from './assets/document.doc';
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+function App() {
+  return (
+    <>
+      <Image file={fs.createReadStream(image)} />
+      <File file={fs.readFileSync(doc)} />
+    </>
+  );
+}
+```

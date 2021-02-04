@@ -20,6 +20,7 @@ export const runTelegramBot = (client: DataClient ) => {
     })
 
 
+
     // keyboard callback
     bot.on('callback_query', (query) => {
         // @ts-ignore

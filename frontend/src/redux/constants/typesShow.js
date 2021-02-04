@@ -1,7 +1,7 @@
-const types = {
+const typesShow = {
   SHOW_LIST_TASKS_SUCCESS: "SHOW_LIST_TASKS_SUCCESS",
   SHOW_LIST_TASKS_FAILURE: "SHOW_LIST_TASKS_FAILURE",
   SHOW_LIST_TASKS_STARTED: "SHOW_LIST_TASKS_STARTED",
 };
 
-export default types;
+export default typesShow;
