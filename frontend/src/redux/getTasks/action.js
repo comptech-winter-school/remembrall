@@ -18,13 +18,13 @@ const showListTasksFailure = (error) => ({
   },
 });
 
-const showListTasks = () => (dispatch) => {
+const showListTasks = (id) => (dispatch) => {
   dispatch(showListTasksStarted());
   axios
   // добавть в параметры id 
-    // .get(`http://localhost:4000/${id}`) 
-    .get("http://localhost:4000")
+    .get(`http://localhost:4000/users/${id}/tasks`) 
     .then((res) => {
+      console.log(res.data)
       dispatch(showListTasksSuccess(res.data));
     })
     .catch((err) => {

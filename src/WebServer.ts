@@ -11,7 +11,7 @@ export const runExpressWebServer = (client: DataClient ) => {
     app.use(bodyParser.json())
     app.use(bodyParser.urlencoded({extended: true}))
 
-    app.get('/', async (req : Request, res : Response) => {
+    app.get('/users/:userId/tasks', async (req : Request, res : Response) => {
 
         /*
 
@@ -61,7 +61,7 @@ export const runExpressWebServer = (client: DataClient ) => {
         // лимита на лимит нет. Это может быть большое число.
         // Разумно указывать столько, сколько нужно на экране показать.
         const unfinishedTasks = await (await FirebaseHandler.create(client)).listUnfinishedUserTasks(404203742, 20)
-        const allTasks = await (await FirebaseHandler.create(client)).listAllUserTasks(404203742, 20)     // id юзера, лимит
+        const allTasks = await (await FirebaseHandler.create(client)).listAllUserTasks(+req.params.userId, 20)     // id юзера, лимит
 
 
        // res.type('text/plain')
