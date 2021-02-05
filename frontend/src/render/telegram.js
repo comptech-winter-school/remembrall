@@ -18,6 +18,7 @@ if (!TELEGRAM_TOKEN) {
 
 const urbanBotTelegram = new UrbanBotTelegram({
     token: TELEGRAM_TOKEN,
+    isPolling: isDevelopment,
 });
 
 render(

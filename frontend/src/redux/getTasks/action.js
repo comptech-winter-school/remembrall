@@ -21,7 +21,9 @@ const showListTasksFailure = (error) => ({
 const showListTasks = () => (dispatch) => {
   dispatch(showListTasksStarted());
   axios
-    .get("https://remembrallbot.herokuapp.com/")
+  // добавть в параметры id 
+    // .get(`http://localhost:4000/${id}`) 
+    .get("http://localhost:4000")
     .then((res) => {
       dispatch(showListTasksSuccess(res.data));
     })

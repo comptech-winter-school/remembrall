@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-namespace */
 export namespace Telegram {
   export const token = process.env.BOTTOKEN || 'telegram-token-is-not-provided'
 }

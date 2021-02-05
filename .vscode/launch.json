@@ -21,6 +21,6 @@
                 "FIREBASE_APP_ID" : "1:888548627715:web:40a4459508cc2adcce8536"
             },
             "program": "${workspaceFolder}/dist/server.js"
-        }
+        },
     ]
 }

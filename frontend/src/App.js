@@ -5,8 +5,9 @@ import Tasks from './components/Tasks/Tasks';
 import Menu from './components/Menu/Menu';
 
 export function App() {
+    
     return (
-        <>
+        <>  
             <Menu />
             <Router>
                 <Route path="/menu">

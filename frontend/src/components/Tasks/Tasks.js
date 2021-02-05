@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { ButtonGroup, Button, useText, Text } from "@urban-bot/core";
+import { ButtonGroup, Button, useText, Text, useCommand, useBotContext } from "@urban-bot/core";
 import getTasks from "../../redux/getTasks/action";
 import addTask from "../../redux/addTasks/action";
+import { setTextRange } from 'typescript';
 
 const Tasks = () => {  
     const dispatch = useDispatch();
     // const [todos, setTodos] = useState([]);
-
+    
     useEffect(() => {
         dispatch(getTasks());
     }, []);
 
     const todos = useSelector((state) => state.tasks);
-
+    
     
     // function addTodo(text) {
     //     const newTodo = { text, id: Math.random(), isCompleted: false };
@@ -35,30 +36,35 @@ const Tasks = () => {
 
         setTodos(newTodos);
     }
-    useText(({ text }) => {
-        useEffect(() => {
-            dispatch(addTask({text, id: Math.random()}))
-        });
-    });
+    // useText(({ text }) => {
+    //     useEffect(() => {
+    //         dispatch(addTask({text, id: Math.random()}))
+    //     });
+    // });
+    const { chat } = useBotContext();
+    // useCommand(({ from }) => {
+    //     console.log(`Пришло сообщение от ${from.id}`);
+    // });
+    console.log(chat.id)
 
     //зачеркнуть или нет
     const title = todos.map((todo) => (
         <>
-            {todo.isCompleted ? <s>{todo.text}</s> : todo.text}
+            {todo.done ? <s>{todo.description}</s> : todo.description}
             <br />
         </>
     ));
 
     //формирование списка кнопок на вывод боту
-    const todosButtons = todos.map(({ text, id }) => (
-        <Button key={id} onClick={() => toggleTodo(id)}>
-            {text}
+    const todosButtons = todos.map((todo) => (
+        <Button key={todo.name} onClick={() => toggleTodo(id)}>
+            {todo.description}
         </Button>
     ));
 
-    if (todos.length === 0) {
-        return <Text>У вас нет задач</Text>;
-    }
+    // if (todos.length === 0) {
+    //     return <Text>У вас нет задач</Text>;
+    // }
 
     return(
         <>

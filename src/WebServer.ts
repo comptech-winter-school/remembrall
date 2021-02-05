@@ -61,11 +61,14 @@ export const runExpressWebServer = (client: DataClient ) => {
         // лимита на лимит нет. Это может быть большое число.
         // Разумно указывать столько, сколько нужно на экране показать.
         const unfinishedTasks = await (await FirebaseHandler.create(client)).listUnfinishedUserTasks(404203742, 20)
+        const allTasks = await (await FirebaseHandler.create(client)).listAllUserTasks(404203742, 20)     // id юзера, лимит
 
 
-        res.type('text/plain')
+       // res.type('text/plain')
+        res.type('application/json')
         res.status(200)
-        res.send('одна задача:\n' + JSON.stringify(task) + '\nнесколько невыполненных задач:\n' + JSON.stringify(unfinishedTasks))
+        res.send(JSON.stringify(allTasks))
+        // res.send('одна задача:\n' + JSON.stringify(task) + '\nнесколько невыполненных задач:\n' + JSON.stringify(unfinishedTasks))
     })
 
     app.post('/', async (req : Request, res : Response) => {
