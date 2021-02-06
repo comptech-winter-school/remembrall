@@ -18,24 +18,23 @@ const Tasks = () => {
     }, [dispatch]);
 
     // Отметить выполненным
-    function toggleTodo(toggledId) {   
-        const newTodos = tasks.map((task) => {
-            console.log(`start ${task.done} ////////`)
-            if (task.name === toggledId) {
-                return {
-                    ...task,
-                    done: !task.done,
-                };
-            }
-            console.log(`end ${task.done} ////////`)
-            return task;
-        });
-        console.log("Hello?");
-        setTodos(newTodos);
-    }
-    function toggleClick(name) {
-        title();
-        dispatch(toggleTask({ id: chat.id, name, description}));
+    // function toggleTodo(toggledId) {   
+    //     const newTodos = tasks.map((task) => {
+    //         console.log(`start ${task.done} ////////`)
+    //         if (task.name === toggledId) {
+    //             return {
+    //                 ...task,
+    //                 done: !task.done,
+    //             };
+    //         }
+    //         console.log(`end ${task.done} ////////`)
+    //         return task;
+    //     });
+    //     console.log("Hello?");
+    //     setTodos(newTodos);
+    // }
+    function toggleClick(name) {        
+        dispatch(toggleTask({ id: chat.id, name}));
     }
     //зачеркнуть или нет
     const title = todos.map((todo) => {
@@ -53,7 +52,7 @@ const Tasks = () => {
     const todosButtons = todos.map((todo) => {
         if(!todo.done) {
             return (
-                <Button key={todo.name} onClick={() => toggleClick(todo.name, todo.description)}>
+                <Button key={todo.name} onClick={() => toggleClick(todo.name)}>
                     {String(todo.description)}
                 </Button>
             )
