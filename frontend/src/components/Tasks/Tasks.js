@@ -15,7 +15,7 @@ const Tasks = () => {
         dispatch(getTasks(chat.id));
     }, []);
     
-    const todos = useSelector((state) => state.tasks);
+    const todos = useSelector((state) => state.getTasksReducer.tasks);
 
     //Отметить выполненным
     function toggleTodo(toggledId) {
@@ -40,7 +40,7 @@ const Tasks = () => {
             <br />
         </>
     ));
-    console.log(todos);
+
     //формирование списка кнопок на вывод боту
     const todosButtons = todos.map((todo) => (
         <Button key={todo.name} onClick={() => toggleTodo(id)}>

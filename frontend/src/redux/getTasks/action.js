@@ -18,18 +18,18 @@ const showListTasksFailure = (error) => ({
   },
 });
 
-const showListTasks = (id) => (dispatch) => {
+const showListTasks = (id) => async (dispatch) => {
   dispatch(showListTasksStarted());
-  axios
+  const response = await axios
   // добавть в параметры id 
     .get(`https://remembrallbot.herokuapp.com/users/${id}/tasks`) 
     .then((res) => {
-      console.log(res.data)
       dispatch(showListTasksSuccess(res.data));
     })
     .catch((err) => {
       dispatch(showListTasksFailure(err.message));
     });
+  return response;
 };
 
 export default showListTasks;
