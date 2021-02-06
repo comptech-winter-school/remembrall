@@ -1,6 +1,5 @@
 import types from "../constants/typesShow";
-// import initialState from "./../initialState";
-// import typesAdd from "../constants/typesAdd";
+import typesToggle from "../constants/typesToggle";
 
 const initialState = {
   loading: false,
@@ -25,6 +24,24 @@ export default function placesReducer(state = initialState, action) {
       return {
         loading: false,
         tasks: [],
+        error: action.payload.error,
+      };
+    case types.TOGGLE_TASK_STARTED:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.TOGGLE_TASK_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        tasks: [...state.tasks, action.payload ],
+        error: "",
+      };
+    case types.TOGGLE_TASK_FAILURE:
+      return {
+        ...state,
+        loading: false,
         error: action.payload.error,
       };
     // case typesAdd.ADD_TASK_SUCCESS:

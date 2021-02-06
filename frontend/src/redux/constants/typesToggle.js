@@ -1,0 +1,7 @@
+const typesToggle = {
+    TOGGLE_TASK_SUCCESS: "TOGGLE_TASK_SUCCESS",
+    TOGGLE_TASK_FAILURE: "TOGGLE_TASK_FAILURE",
+    TOGGLE_TASK_STARTED: "TOGGLE_TASK_STARTED",
+  };
+  
+  export default typesToggle;
