@@ -18,11 +18,11 @@ const addTaskFailure = (error) => ({
   },
 });
 
-const addTask = ({ text, id }) => (dispatch) => {
+const addTask = ({ text, id }) => async (dispatch) => {
   dispatch(addTaskStarted());
   const encoded = encodeURI(text);
   const dataEncode = `description=${encoded}`;
-  axios
+  const response = await axios
     .post(`https://remembrallbot.herokuapp.com/users/${id}/new-task`, dataEncode)
     .then((res) => {
       console.log(res.data);
@@ -31,6 +31,7 @@ const addTask = ({ text, id }) => (dispatch) => {
     .catch((err) => {
       dispatch(addTaskFailure(err.message));
     });
+    return response;
 };
 
 export default addTask;

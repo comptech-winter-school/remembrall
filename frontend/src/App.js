@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Route, Router, Text } from '@urban-bot/core';
+import { Provider } from "react-redux";
 import Help from './components/Help/Help';
 import Tasks from './components/Tasks/Tasks';
 import Menu from './components/Menu/Menu';
 import AddTask from './components/AddTask/AddTask';
+import createAppStore from "./redux/store";
 
 export function App() {
-    
+    const store = useMemo(createAppStore, []);
     return (
         <>  
+        <Provider store={store}>
             <Menu />
             <Router>
                 <Route path="/menu">
@@ -29,6 +32,7 @@ export function App() {
                     <AddTask />
                 </Route>
             </Router>
+            </Provider>
         </>
     );
 }
