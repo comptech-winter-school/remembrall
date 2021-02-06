@@ -18,22 +18,19 @@ const addTaskFailure = (error) => ({
   },
 });
 
-const addTask = () => ({ text, id }) => {
-  return dispatch => {
+const addTask = ({ text, id }) => (dispatch) => {
   dispatch(addTaskStarted());
+  const encoded = encodeURI(text);
+  const dataEncode = `description=${encoded}`;
   axios
-    .post("", {
-      text,
-      id,
-      isCompleted: false,
-    })
+    .post(`https://remembrallbot.herokuapp.com/users/${id}/new-task`, dataEncode)
     .then((res) => {
+      console.log(res.data);
       dispatch(addTaskSuccess(res.data));
     })
     .catch((err) => {
-      dispatch(addTasksFailure(err.message));
+      dispatch(addTaskFailure(err.message));
     });
-  };
 };
 
 export default addTask;

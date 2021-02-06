@@ -1,10 +1,6 @@
 import types from "../constants/typesShow";
-
-const initialState = {
-  loading: false,
-  tasks: [],
-  error: null,
-};
+import initialState from "./../initialState";
+import typesAdd from "../constants/typesAdd";
 
 export default function placesReducer(state = initialState, action) {
   switch (action.type) {
@@ -24,6 +20,12 @@ export default function placesReducer(state = initialState, action) {
         loading: false,
         tasks: [],
         error: action.payload.error,
+      };
+    case typesAdd.ADD_TASK_SUCCESS:
+      return {
+        loading: false,
+        tasks: [...state.tasks, action.payload],
+        error: "",
       };
     default:
       return state;

@@ -24,7 +24,6 @@ const showListTasks = (id) => (dispatch) => {
   // добавть в параметры id 
     .get(`https://remembrallbot.herokuapp.com/users/${id}/tasks`) 
     .then((res) => {
-      console.log("What happened")
       console.log(res.data)
       dispatch(showListTasksSuccess(res.data));
     })
