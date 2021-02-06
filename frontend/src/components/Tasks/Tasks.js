@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { ButtonGroup, Button, useText, Text, useCommand, useBotContext } from "@urban-bot/core";
+import { ButtonGroup, Button, useBotContext } from "@urban-bot/core";
 import getTasks from "../../redux/getTasks/action";
-import addTask from "../../redux/addTasks/action";
+// import addTask from "../../redux/addTasks/action";
 import { setTextRange } from 'typescript';
 
 const Tasks = () => {  
@@ -50,7 +50,7 @@ const Tasks = () => {
     //зачеркнуть или нет
     const title = todos.map((todo) => (
         <>
-            {todo.done ? <s>{todo.description}</s> : todo.description}
+            {todo.done ? <s>{String(todo.description)}</s> : String(todo.description)}
             <br />
         </>
     ));
@@ -58,7 +58,7 @@ const Tasks = () => {
     //формирование списка кнопок на вывод боту
     const todosButtons = todos.map((todo) => (
         <Button key={todo.name} onClick={() => toggleTodo(id)}>
-            {todo.description}
+            {String(todo.description)}
         </Button>
     ));
 

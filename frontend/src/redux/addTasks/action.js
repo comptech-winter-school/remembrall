@@ -22,7 +22,7 @@ const addTask = () => ({ text, id }) => {
   return dispatch => {
   dispatch(addTaskStarted());
   axios
-    .post("https://remembrallbot.herokuapp.com/", {
+    .post("", {
       text,
       id,
       isCompleted: false,

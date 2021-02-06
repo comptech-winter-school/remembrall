@@ -22,8 +22,9 @@ const showListTasks = (id) => (dispatch) => {
   dispatch(showListTasksStarted());
   axios
   // добавть в параметры id 
-    .get(`http://localhost:4000/users/${id}/tasks`) 
+    .get(`https://remembrallbot.herokuapp.com/users/${id}/tasks`) 
     .then((res) => {
+      console.log("What happened")
       console.log(res.data)
       dispatch(showListTasksSuccess(res.data));
     })
