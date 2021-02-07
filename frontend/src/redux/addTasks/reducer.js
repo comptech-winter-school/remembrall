@@ -2,7 +2,7 @@ import types from "../constants/typesAdd";
 
 const initialState = {
   loading: false,
-  tasks: [],
+  tasks: "",
   error: null,
 };
 
@@ -14,6 +14,7 @@ export default function placesReducer(state = initialState, action) {
         loading: true,
       };
     case types.ADD_TASK_SUCCESS:
+      console.log(action.payload)
       return {
         ...state,
         loading: false,

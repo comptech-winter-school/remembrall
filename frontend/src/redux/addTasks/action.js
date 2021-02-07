@@ -25,6 +25,7 @@ const addTask = ({ text, id }) => async (dispatch) => {
   const response = await axios
     .post(`https://remembrallbot.herokuapp.com/users/${id}/new-task`, dataEncode)
     .then((res) => {
+      console.log(res.data);
       dispatch(addTaskSuccess(res.data));
     })
     .catch((err) => {
