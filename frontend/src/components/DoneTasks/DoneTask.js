@@ -1,14 +1,11 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from "react-redux";
-import { useBotContext, Text } from "@urban-bot/core";
-import getTasks from "../../redux/getTasks/action";
+import React from 'react';
+import { useSelector } from "react-redux";
+import { Text } from "@urban-bot/core";
 
 const DoneTask = () => {
-    const dispatch = useDispatch();
     const todos = useSelector((state) => state.getTasksReducer.tasks);
-    const { chat } = useBotContext(); 
     const title = todos.map((todo) => {
-        if(!todo.done) {
+        if(todo.done) {
             return (
                 <>
                     {String(todo.description)}

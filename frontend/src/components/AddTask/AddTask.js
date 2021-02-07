@@ -5,7 +5,6 @@ import addTask from "../../redux/addTasks/action";
 
 const AddTask = () => {
     const dispatch = useDispatch();
-    const [tasks, setTodos] = useState({});
     const { chat } = useBotContext();
 
     useText(({text}) => {

@@ -26,31 +26,13 @@ export default function placesReducer(state = initialState, action) {
         tasks: [],
         error: action.payload.error,
       };
-    // case typesToggle.TOGGLE_TASK_STARTED:
-    //   return {
-    //     ...state,
-    //     loading: true,
-    //   };
     case typesToggle.TOGGLE_TASK_SUCCESS:
-      console.log(`it is${state.tasks.map((todo) => (todo.name === action.payload ? { ...todo, done: !todo.done } : todo))}`)
       return {
         ...state,
         loading: false,
         tasks: state.tasks.map((todo) => (todo.name === action.payload ? { ...todo, done: !todo.done } : todo)),
         error: "",
       };
-    // case typesToggle.TOGGLE_TASK_FAILURE:
-    //   return {
-    //     ...state,
-    //     loading: false,
-    //     error: action.payload.error,
-    //   };
-    // case typesAdd.ADD_TASK_SUCCESS:
-    //   return {
-    //     loading: false,
-    //     tasks: [...state.tasks, action.payload],
-    //     error: "",
-    //   };
     default:
       return state;
   }

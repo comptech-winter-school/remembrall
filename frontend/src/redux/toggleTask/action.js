@@ -23,15 +23,11 @@ const toggleTaskFailure = (error) => ({
 });
 
 const toggleTask = ({id, name}) => async (dispatch) => {
-    console.log(`toggle start ${id} ${name}`);
   dispatch(toggleTaskStarted());
   const response = await axios
   // добавть в параметры id 
     .post(`https://remembrallbot.herokuapp.com/users/${id}/finish-task`, { name } ) 
     .then((res) => {
-        console.log("res.data");
-        console.log(`(((( ${res.data.name}`);
-        console.log("res.data");
       dispatch(toggleTaskSuccess(res.data.name));
     })
     .catch((err) => {

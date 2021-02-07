@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Provider } from "react-redux";
 import { UrbanBotTelegram } from '@urban-bot/telegram';
 import { render, Root } from '@urban-bot/core';
 import dotenv from 'dotenv';

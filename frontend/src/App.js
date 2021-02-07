@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Route, Router, Text, ButtonGroup, Button } from '@urban-bot/core';
 import { Provider } from "react-redux";
 import Help from './components/Help/Help';
