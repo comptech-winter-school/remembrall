@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { ButtonGroup, Button, useBotContext } from "@urban-bot/core";
+import { ButtonGroup, Button, useBotContext, Text } from "@urban-bot/core";
 import getTasks from "../../redux/getTasks/action";
 import toggleTask from "../../redux/toggleTask/action";
 
@@ -28,7 +28,6 @@ const Tasks = () => {
             );
         }
     });
-
     //формирование списка кнопок на вывод боту
     const todosButtons = todos.map((todo) => {
         if(!todo.done) {
@@ -39,10 +38,10 @@ const Tasks = () => {
             )
         }
     });
-
+    
     return(
         <>
-            <ButtonGroup title={"Список задач"} maxColumns={1} isNewMessageEveryRender={false}>
+            <ButtonGroup title={"Список задач. Их нет? Значит нужно добавить"} maxColumns={1} isNewMessageEveryRender={false}>
                 {todosButtons}
             </ButtonGroup>
         </>
