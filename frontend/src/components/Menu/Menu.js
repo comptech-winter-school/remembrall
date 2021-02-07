@@ -5,8 +5,8 @@ const Menu = () => {
     const { navigate } = useRouter();
     return (
         <ButtonGroup title="Меню" isNewMessageEveryRender={false}>
-            <Button onClick={() => navigate('/help')}>Помощь</Button>
             <Button onClick={() => navigate('/tasks')}>Список задач</Button>
+            <Button onClick={() => navigate('/help')}>Помощь</Button>
         </ButtonGroup>
     );
 }

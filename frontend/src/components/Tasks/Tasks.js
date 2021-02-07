@@ -41,7 +41,7 @@ const Tasks = () => {
     
     return(
         <>
-            <ButtonGroup title={"Список задач. Их нет? Значит нужно добавить"} maxColumns={1} isNewMessageEveryRender={false}>
+            <ButtonGroup title={"Список задач. Если их нет, то нужно добавить"} maxColumns={1} isNewMessageEveryRender={false}>
                 {todosButtons}
             </ButtonGroup>
         </>
