@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, useBotContext, useText } from '@urban-bot/core';
 import { useDispatch } from "react-redux";
 import addTask from "../../redux/addTasks/action";

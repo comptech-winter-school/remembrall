@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, useRouter, ButtonGroup, Button } from '@urban-bot/core';
+import { useRouter, ButtonGroup, Button } from '@urban-bot/core';
 
 const Buttons = () => {
     const { navigate } = useRouter();

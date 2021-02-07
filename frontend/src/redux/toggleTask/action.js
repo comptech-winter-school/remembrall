@@ -2,14 +2,11 @@
 import axios from "axios";
 import types from "../constants/typesToggle";
 
-const toggleTaskSuccess = (tasks) => {
-  console.log(`from success ${tasks}`)
-  return(
-  {
+const toggleTaskSuccess = (tasks) => ({
   type: types.TOGGLE_TASK_SUCCESS,
   payload: tasks,
 });
-}
+
 
 const toggleTaskStarted = () => ({
   type: types.TOGGLE_TASK_FAILURE,
@@ -25,7 +22,6 @@ const toggleTaskFailure = (error) => ({
 const toggleTask = ({id, name}) => async (dispatch) => {
   dispatch(toggleTaskStarted());
   const response = await axios
-  // добавть в параметры id 
     .post(`https://remembrallbot.herokuapp.com/users/${id}/finish-task`, { name } ) 
     .then((res) => {
       dispatch(toggleTaskSuccess(res.data.name));
